@@ -132,3 +132,4 @@ internvenv
 data/
 train_data/
 test_data/
+sanity_data/
