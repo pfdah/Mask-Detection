@@ -130,4 +130,5 @@ internvenv
 
 # Ignore dataset
 data/
-dataset/
+train_data/
+test_data/
