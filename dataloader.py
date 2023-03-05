@@ -4,7 +4,7 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
 
-def create_dataloader(path):
+def create_dataloader(path, batch_size):
     data_transforms = transforms.Compose([transforms.Resize((150,150)),
                                        transforms.ToTensor(),                                
                                        torchvision.transforms.Normalize(
@@ -13,5 +13,6 @@ def create_dataloader(path):
     ),
                                        ])
     data = datasets.ImageFolder(path,transform=data_transforms)
+
     
-    return DataLoader(data, shuffle = True, batch_size=4)
+    return DataLoader(data, shuffle = True, batch_size=batch_size)

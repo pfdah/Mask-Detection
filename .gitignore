@@ -123,7 +123,7 @@ internvenv
 # Model files
 *.bin
 *.model
-
+*.pt
 
 # Images
 .jpg
@@ -133,3 +133,5 @@ data/
 train_data/
 test_data/
 sanity_data/
+
+
