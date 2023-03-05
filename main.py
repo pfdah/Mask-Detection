@@ -6,7 +6,6 @@ from torchvision import transforms
 import torchvision
 from torch.utils.data import DataLoader
 
-net  = torch.load('./model.pt')
 data_transforms = transforms.Compose([transforms.Resize((150,150)),
                                        transforms.ToTensor(),                                
                                        torchvision.transforms.Normalize(
@@ -14,9 +13,8 @@ data_transforms = transforms.Compose([transforms.Resize((150,150)),
                                            std=[0.229, 0.224, 0.225],
     ),])
 
-def detect():
+def detect(model):
     vid = cv2.VideoCapture(0)
-  
     while(True):
         try: 
             ret, frame = vid.read()
@@ -42,20 +40,17 @@ def detect():
             l = DataLoader([l])
             dataiter = iter(l)
             l = next(dataiter)
-            output = net(l)
+            output = model(l)
             _, pred = torch.max(output,1)
-            
             
             if pred.item() == 1:
                 color = (0,255,0)
                 cv2.putText(frame, 'Mask', (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1,color)
-
             else:
                 color = (0,0,255)
                 cv2.putText(frame, 'No mask', (20,20), cv2.FONT_HERSHEY_SIMPLEX, 1, color)
 
             cv2.imshow('frame', frame)
-
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
         
