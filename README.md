@@ -9,8 +9,8 @@ pip install -r requirements.txt
 ```
 
 
-The dataset can be found in : https://www.kaggle.com/datasets/omkargurav/face-mask-dataset. 
+The dataset can be found in : https://www.kaggle.com/datasets/omkargurav/face-mask-dataset. Download the dataset, extract it.
 
-You must run all the cells of the ```test.ipynb``` after copying the dataset to the root folder to run the code create the necessary divide and train the model.
+You must run all the cells of the ```test.ipynb``` after copying the data folder dataset to the root folder to run the code create the necessary divide and train the model.
 
 The model can be run by running the cells of ```runner.ipynb``` .
