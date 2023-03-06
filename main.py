@@ -5,6 +5,8 @@ import torch
 from torchvision import transforms
 import torchvision
 from torch.utils.data import DataLoader
+from matplotlib import pyplot as plt
+import torch.nn.functional as F
 
 data_transforms = transforms.Compose([transforms.Resize((150,150)),
                                        transforms.ToTensor(),                                
@@ -14,6 +16,7 @@ data_transforms = transforms.Compose([transforms.Resize((150,150)),
     ),])
 
 def detect(model):
+    model.eval()
     vid = cv2.VideoCapture(0)
     while(True):
         try: 
@@ -41,9 +44,9 @@ def detect(model):
             dataiter = iter(l)
             l = next(dataiter)
             output = model(l)
-            _, pred = torch.max(output,1)
+            sigmoid  = F.sigmoid(output)
             
-            if pred.item() == 1:
+            if sigmoid.item() >= 0.5:
                 color = (0,255,0)
                 cv2.putText(frame, 'Mask', (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1,color)
             else:
