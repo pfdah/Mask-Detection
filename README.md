@@ -14,11 +14,23 @@ The dataset can be found in : https://www.kaggle.com/datasets/omkargurav/face-ma
 For running the project for the first time run these commands.
 
 ```
+python run_train.py
+python run_webcam.py
+```
+or 
+
+```
 python3 run_train.py
 python3 run_webcam.py
 ```
 
 For running it other times run this command.
+
+```
+python run_webcam.py
+```
+or 
+
 ```
 python3 run_webcam.py
 ```
