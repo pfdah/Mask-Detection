@@ -123,6 +123,7 @@ internvenv
 # Model files
 *.bin
 *.model
+*.pt
 
 
 # Images
