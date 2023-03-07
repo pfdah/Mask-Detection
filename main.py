@@ -46,13 +46,12 @@ def detect(model):
             output = model(l)
             sigmoid  = F.sigmoid(output)
             
-            if sigmoid.item() >= 0.5:
+            if sigmoid.item() < 0.5:
                 color = (0,255,0)
                 cv2.putText(frame, 'Mask', (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1,color)
             else:
                 color = (0,0,255)
-                cv2.putText(frame, 'No mask', (20,20), cv2.FONT_HERSHEY_SIMPLEX, 1, color)
-
+                cv2.putText(frame, 'No Mask', (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1,color)
             cv2.imshow('frame', frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
