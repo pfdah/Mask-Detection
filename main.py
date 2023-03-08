@@ -45,8 +45,10 @@ def detect(model):
             l = next(dataiter)
             output = model(l)
             sigmoid  = F.sigmoid(output)
+
+            prob = sigmoid.item()
             
-            if sigmoid.item() >= 0.5:
+            if prob >= 0.5:
                 color = (0,255,0)
                 cv2.putText(frame, 'Mask', (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1,color)
             else:

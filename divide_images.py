@@ -2,12 +2,25 @@ import os
 import shutil
 
 
-def test_train(src_folder, test_destination, train_destination):
+def test_train(src_folder, test_destination, train_destination, sanity_destination):
+    '''split the images in the data folder into test, train and sanity folders
+
+    Parameters
+    ----------
+    src_folder : string
+        the path for the source folder
+    test_destination : string
+        the path for the test folder
+    train_destination : string
+        the path for train folder
+    sanity_destination : string
+        the path for sanity folder
+    '''
     sub_folders = ['with_mask', 'without_mask']
     # specify the condition to separate files
     condition = lambda filename: filename.endswith("5.jpg")
     
-    sanity_path = './sanity_data'
+    sanity_path = sanity_destination
 
     if not os.path.exists(sanity_path):
         os.makedirs(sanity_path)

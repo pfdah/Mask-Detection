@@ -5,6 +5,20 @@ from torch.utils.data import DataLoader
 
 
 def create_dataloader(path, batch_size):
+    '''Create the dataloader using the images in a folder
+
+    Parameters
+    ----------
+    path : string
+        the path of the folder
+    batch_size : int
+        the batch size of dataloader
+
+    Returns
+    -------
+    dataloader object
+        the created dataloader
+    '''
     data_transforms = transforms.Compose([transforms.Resize((150,150)),
                                        transforms.ToTensor(),                                
                                        torchvision.transforms.Normalize(
